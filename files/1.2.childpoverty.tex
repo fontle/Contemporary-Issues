@@ -1,0 +1,288 @@
+\documentclass[../Main.tex]{subfiles}
+
+\begin{document}
+\begin{refsection}
+
+\chapter{Child Poverty}
+
+\chaptertoc
+\intro{
+\begin{itemize} 
+
+    \item \textit{What is the effect of living in poverty as a child?}
+
+    \item \textit{What is the identification problem in estimating this effect?}
+
+    \item \textit{What tools have economists used to estimate this effect?}
+
+    \item  \textit{What is the evidence on the estimated effects of child
+    poverty on outcomes?}
+    
+\end{itemize}
+
+}
+
+\section{Child Poverty in the UK}
+\cont{A Big Problem}{
+\begin{itemize}
+    \item One in three children live in poverty in the UK. 
+    \item One in two children live in poverty in lone parent or ethnic minority
+    households. 
+    \item Internationally, the UK has child poverty rates above the
+    OECD average.
+\end{itemize}
+}
+
+There are many options for policy makers to increase income in low income
+families that can reduce child poverty, these usually are implemented as direct
+cash transfers.
+
+
+
+\section{Economic Theory}
+
+Economists approach child poverty with a model that utilises a \textit{child
+production function}.  
+
+$$
+Y_{cf} = h(\text{Genetics}_{cf}, \text{Time}_{cf}, \text{Money}_{cf})
+$$
+For a given child, $c$, born into a given family, $f$, received wage $Y$ based
+on factor inputs: Genetics, time, and money). 
+The function $h$ defines the process through which these inputs determine child
+outcomes, usually appropriated as wage.
+
+Time and money investments in children may change dynamically as parents income
+changes, for example if the parents have an opportunity to earn more
+$\text{Money}$, they may spend less $\text{Time}$ with their children. Raises
+questions such as the trade off between time spent and money invested and its
+allocation impacts child futures. 
+
+However, focus is on \textbf{child poverty}, the marginal impact of money is
+likely to be much greater to families that live in poverty as that unit of money
+is likely to have tangible health outcomes:
+
+    
+\begin{itemize}
+    \item Lowering stress in the household 
+    \item Able to buy more nutritious food 
+    \item By books or other supplementary materials for the child
+    \item Pay off bills, alleviate heat poverty. 
+\end{itemize}
+
+First, test whether these inputs $\text{Time}$ and $\text{Money}$ increase as
+household income increases. This would ensure that a policy choice of cash
+transfer to households results in tangible changes to child outcomes.
+
+There is a lot of evidence to suggest the theory is correct, increases in cash
+transfers effect household consumption in ways beneficial to children.
+\textcite{gregg_family_2006} and \textcite{jones_impact_2018} found that there
+is no evidence that families spend cash transfers on \textit{bad} consumption
+choices such as tobacco and alcohol. Furthermore, \textcite{evans_giving_2014}
+showed that cash transfers in the USA improved parent physical and mental
+health.
+
+
+
+\section{Empirical Approaches}
+
+The aforementioned studies established that cash transfers to households are
+used to the child's benefit, however to further examine the policy implications
+we must assess whether these cash transfers actually raise the success of
+children \textit{later} in there life. If so, money matters for children in
+poverty, as it impacts there life outcomes. If \textit{not}, there are likely
+unobservable traits of families which cause poverty to persist
+intergenerationally. We will utilise a regression equation including both parent
+and child outcomes to assess this potential mechanism. 
+
+\begin{equation}
+Y_C = \alpha + \beta Y_P + \delta X + \epsilon
+\end{equation}
+
+\begin{itemize}
+    \item $Y_C$ and $Y_P$ denotes wage outcomes of children and parents
+    respectively
+    
+    \item $\beta$ represents the impact of parental wage outcomes on child wage
+    outcomes
+    
+    \item $X$ again represents controls: including parents' education, age at
+    birth, region, and intelligence. 
+    
+\end{itemize}
+
+One concern in this model is the likely endogeneity of parental outcomes $Y_P$
+on child outcomes which could bias the model. A glaring confounding variable
+that is a potential source for this endogeneity, is \textit{region}. As a
+person's income is heavily dependent on where they live, and individuals are
+more likely to work where they grow up due to social ties, this would
+simultaneously impact both parental and child outcomes and would create bias if
+not accounted for. Region can be easily controlled for and accounted for in $X$,
+if the study implements a representative dataset with households across a
+country, however some variables are both difficult to measure or identify.
+
+Some approaches used by econometricians to control for these variables include 
+\begin{itemize}
+    \item \textit{Quasi}-natural experiments such as local casino openings
+    \autocite{akee_parents_2010} and random lottery winners
+    \autocite{bleakley_shocking_2016}. 
+    \item Instrument Variable Approaches 
+    \item  Sibling differences 
+    \item  Neighbourhood differences 
+    \item  Adoptees 
+\end{itemize}
+
+
+\subsection{Difference in Differences}
+
+\exm{\textcite{akee_parents_2010}}{
+Akee et al. used casino opening in Eastern Cherokee in 1990s whose profits were
+regularly distributed amongst all American-Indians.  These large, regular annual
+transfers raised average household income in the region by 20-40\%. They used
+difference in differences between two treatment groups across different time
+horizons: 
+
+\begin{description}
+    \item[Control Group] were households with no American-Indian parents and
+    therefore no regular cash transfers.
+    
+    \item[Treatment Groups] were household with either one or two A-I parents
+    that received one or two payments respectively
+    
+    \item[Time Horizons] compared the difference in receiving the cash transfer
+    for 6 years compared to none, and 2 years compared to none on the child
+    outcomes. 
+    
+\end{description}
+
+}
+
+\section{Practical Questions}
+
+\begin{itemize}
+
+    \item[10\%] Explain why a correlation between the income of parents and their
+    children (when they become adults) will not identify a causal parameter, giving
+    examples of possible confounders.
+    
+    \begin{answer}
+        There are many variables that are likely to impact both the parents and
+        child's wage outcomes simultaneously. For example, region. Individuals
+        are likely to work near where they grow up due to social ties and a greater
+        sense of belonging in the place they grew up in, however, this also greatly
+        impacts one's wage. Consequently, if not included in a regression between
+        parental and child income, the OLS estimator could be biased as it has conflated
+        region specific dynamics.
+    \end{answer}
+    
+    \item [30\%] \textcite{bleakley_shocking_2016} estimate the effect of parents lottery
+    win on child outcomes.
+    
+    \begin{itemize}
+    
+        \item Read the paper (focus on the introduction and read more into the
+        remaining sections if it will help your understanding).
+        
+        \item Write the estimation equation and define the treatment and control
+        groups.
+    
+        \begin{answer}
+            The estimation equation used was, 
+        
+            $$Y_{ij} = \gamma T_j + \beta \mathbf{X}_{ij} + \delta_{ai} + \epsilon_{ij}$$
+            
+            Where $i$ is each individual, and $j$ indexes the lottery-eligible
+            person. $T_j$ represents the treatment, where a person $j$ receives
+            a winning parcel, $\mathbf{X}$ represents a set of controls,
+            $\delta_{ai}$ are a set of age dummies. The treatment group are the
+            set of individual's who won the lottery $T = 1$ compared to the
+            control group who did not receive a lottery parcel $T=0$.
+            
+        \end{answer}
+        
+        \item What were the findings of the paper (read through the results
+        section to understand how the authors discuss the results. Be sure to
+        quote and explain the estimated coefficients.
+    
+        \begin{answer}
+        
+            Overall, they found contrasting evidence to the theory: ``Children
+            of lottery winners did not have more wealth, literacy, or income as
+            adults." The paper's discussion focuses on two key questions, the
+            comparative returns to skill for lottery winner's children and
+            intergenerational wealth of lottery winners. They find for the
+            former that families did not invest more in their children's human
+            capital after winning a lottery (their estimates for literacy rates
+            amongst the treatment group were insignificant). For the latter,
+            they find that ``the elasticity of son's 1870 wealth with respect to
+            the father's 1850 wealth is between 0.13 and 0.28", implying that a
+            1\% increase in father's wealth in 1850 corresponded to between a
+            0.13\% - 0.25\% increase in the son's wealth, although statistically
+            significant, this small amount implies the intergenerational wealth
+            mechanism is weak and that individual factors have a larger
+            explanatory role in determining a child's wage outcomes. 
+            
+        \end{answer}
+        
+        \item Do the findings of this paper generalise to the question: does
+        living in poverty as a child affect long-run outcomes for the child? (Be
+        creative with your answers – I am interested in your thoughts).
+    
+        \begin{answer}
+        
+            There is considerable doubt that \textcite{bleakley_shocking_2016}
+            findings generalise to whether poverty as a child affect long-run
+            outcomes for children. Firstly, the study's dataset and analysis is
+            tied to a small temporal-spatial context, that is, a county in
+            Georgia during the 18$^{\text{th}}$ century over a period of
+            significant economic turbulence. The author's note how the Civil War
+            and Slavery Emancipation altered capital accumulation and investment
+            allocation which could distort the behaviour of parents who received
+            lottery payments. Therefore, it is unlikely that these findings
+            could be generalised to a modern context or in other regions which
+            have different social dynamics. For example, the increase in
+            education over the last century and the declining birth rates is
+            likely to have altered familial dynamics; parents may place greater
+            weight on child outcomes when they have fewer children, or if they
+            are more educated about the lasting impact parental support has on
+            the development of a child.
+    
+        \end{answer}
+        
+    \end{itemize}
+
+\item [30\%] \textcite{akee_parents_2010} wanted to estimate the effect of
+family income on the outcomes of children once they have grown up. The authors
+were concerned that simply correlating family income with child outcomes would
+produce a biased estimate. Explain the methods they used to identify the causal
+effect. What did their study find?
+
+\begin{answer}
+    
+They used a difference in difference approach comparing the child outcomes whose
+parents received exogenous wealth shocks compared to those that did not across
+two different time periods (2 years of wealth shocks and 6 years of wealth
+shocks). The exogenous wealth shock identified were annual payments made by
+casino's in the South Cherokee region to native American adults. Since casino
+openings were exogenous to parent's income who didn't work in those regions (the
+author did acknowledge a potential impact on wage demand, however after
+controlling from distance to the casino this was insignificant) this would
+isolate for the causal impact of income changes whilst holding all other factors
+constant, identifying the causal affect of family incomes on children.
+
+Children in affected households have higher levels of education in their young
+adulthood and a lower incidence of criminality for minor offenses. Effects
+differ by initial household poverty status. An additional \$4000 per year for
+the poorest households increases educational attainment by one year at age 21
+and reduces having ever committed a minor crime by 22\% at ages 16-17. Their
+evidence suggests that improved parental quality is a likely mechanism for the
+change.
+
+\end{answer}
+
+\end{itemize}
+\printbibliography
+\end{refsection}
+\end{document}
+
+        

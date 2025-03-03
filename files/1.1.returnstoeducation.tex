@@ -1,0 +1,336 @@
+\documentclass[../Main.tex]{subfiles}
+
+\begin{document}
+\begin{refsection}
+
+\chapter{Returns to Education}
+    
+
+
+\intro{ 
+\begin{itemize}
+    \item \textit{Does education create an increase in wages?}
+    \item \textit{Can education decrease inequality?}
+\end{itemize}
+}
+
+\section{Economic Theory}
+
+There are two main theories underpinning potential effects of education on the wage equation, each with their own nuance: 
+
+\thm{Human capital}{The Human capital theory, the older more established theory,
+suggests that education is useful \textit{in of itself}, since school provides
+skills such as writing, reading, typing, arithmetic, etc. Skills which are
+transferable and useful in the workplace.}
+
+
+\thm{Signalling}{The signalling theory is a result of more recent developments
+in game theory and behavioural economics, it suggests the skills from education
+are not always useful in of themselves, instead training and tenure being more
+useful, especially for firms hiring in the more specialised roles of a modern
+quaternary economy. Education is assumed to by a \textbf{type signal} whereby
+getting qualifications, budding employees signal to employers that they are of a
+different \textit{type}\footnote{This is game theory jargon but just consider a
+unique characteristic of a worker} to others by being more skilled than their
+counterparts.}
+
+\newpage
+\section{Empirical Framework}
+
+Economists tend to utilise a regression equation to estimate the impact of education on the wages of a given individual: 
+\begin{equation}
+    Y = \alpha + \beta S + \delta X + \epsilon
+\end{equation}
+
+\begin{itemize}
+    \item $X$ is often used as a catchall vector for the control variables such as age,
+    gender, ethnicity etc. 
+    \item $S$ here is the \textit{regressor}\footnote{Regressor simply refers to
+    a variable within the regression equation. Inversely, Regressand refers to
+    the variable being predicted by the regression equation.}, in this case, it is years of schooling.
+    \item $Y$ is the \textit{regressand}, the hourly wage.
+    \item $\alpha$ is the intercept. Intuitively, it is the wage estimated by
+    the lowest education for the control individual, where all dummies in $X$
+    are set to 0.\footnote{For example, say $X$ consisted of two dummies
+    $\text{female}$ and $\text{non-white}$, the control individual where all
+    dummies are null would be a white male with no education.} \item $\beta$ is
+    the effect of changing values of $S$ on $Y$, and is the
+    predicted impact of a change in schooling years on the wage equation.
+\end{itemize}
+
+\subsection{Testing Statistical Significance}
+    
+The \textbf{standard error} is a commonly used measure of statistical precisions
+with which coefficients are estimated. It is important to statistically test the
+coefficients to ensure that they are meaningful and robust.
+
+The t-statistic is a measure of the relative size of the coefficient to the
+standard error: 
+\begin{equation}
+    t = \frac{\hat{\beta} - \beta_0}{\text{se}(\hat{\beta})}
+\end{equation}
+With a null hypothesis that $\beta = 0$; the t-statistics simply reduces to $t =
+\hat{\beta} \div \text{se}(\hat{\beta})$. We can use a look up table to
+determine whether the p-value; 0.05 is the generally accepted value for
+statistical significance.\footnote{A nice heuristic: if the absolute value of
+the t-statistic is greater than 1.96, than a null hypothesis of $\beta_0$ can be
+rejected.}
+
+However, researchers be weary, inferring causality from estimates of
+coefficients is still problematic, even if the t-statistic determines them to be
+statistically significant. The main issue is that of \textbf{endogenity},
+identified where the regressor correlates strongly with the error term,
+indicating multiple potential issues with the regression or the data: 
+\begin{description}
+    \item[Omitted Variable Bias] Where a missing variable correlates with both the regressor$S$ and the regressand $Y$. 
+    \item[Reverse Causality] Where the implied causality is between the
+    regressor and regressand where in fact its the other way round.
+    \item[Simultaneity] Where both the regressor and regressand dynamically
+    interact with each other. \end{description}
+
+Any sources of endogeneity violate the
+\href{https://en.wikipedia.org/wiki/Gauss%E2%80%93Markov_theorem#:~:text=the%20original%20equation.-,Strict%20exogeneity,-%5Bedit%5D}{Gauss-Markov Theorem} assumption of strict exogeneity with the error term, resulting in an
+upward bias on $\beta$.
+
+\vfill
+    \rmkb{\textcolor{red}{\textbf{ALL REGRESSIONS FACE THE CAUSATION PROBLEM.
+    SEPERATING CAUSATION FROM CORRELATION IS A THEORETICAL ENDEAVOUR.}}} \vfill
+\newpage
+\section{Empirical Approaches}
+
+An ideal empirical methodology would involve creating exogenous variation in the
+regressor $S$ that is uncorrelated with the regressand $Y$ after conditioning
+with controls $X$. This would allow a researcher to effectively create
+\textit{control} and \textit{treatments} groups. However usually creating such
+perfect experiments in an economic setting raises ethical concerns; the obvious
+being it is immoral to actively deny a child schooling to assess future outcomes
+knowing that it would likely be to the detriment. To \textit{partially-}solve
+this econometricians use sources of plausible exogeneity to create
+\textit{quasi-natural} experiments.
+
+\subsection{Instrumental Variable Approach (2SLS)}
+
+This method of creating quasi-experimental conditions by identifying a plausible
+source of exogeneity. By first predicting the regressor with an instrument, $Z$, and
+then predicting the regressand using the predicted value of the regressor, the researcher can isolate the impact of the regressor on the regressand if \textbf{two assumptions} are satisfied.
+
+\asumr{Relevance}{relevance}{The instrument must be \textbf{highly} correlated with the
+regressor. This assumption can be validated by checking that the instruments
+coefficient on the regressand is statistically significant ($\alpha_1$).}
+
+\asumr{Exclusion Restriction}{exclusion}{The instrument must be uncorrelated with the
+regressand except through its impact on the endogenous regressor.
+\textcolor{red}{\textbf{This is UNTESTABLE!}} }
+
+\paragraph{Stage One: Predicting the regressor with the Instrument} 
+\begin{equation}
+    \hat{S} = \alpha_0 + \alpha_1 Z + \alpha_2 X + \mu
+\label{eq:2sls stage one}
+\end{equation}
+\paragraph{Stage Two: Predicting Regressand using Stage One}
+\begin{equation}
+    Y = \beta_0 + \beta_1 \hat{S} + \beta_2 X + \epsilon
+\end{equation}
+
+
+\exm{\textcite{angrist_does_1991}}{
+Used an instrument variable approach, exploiting variation in institutional
+rules which create quasi-random variation in schooling. Using men between 1930
+and 1959, those born in an earlier quarter of the year have slightly less
+schooling than those born later in the year due to compulsory school leaving age
+policies set by the government: \textit{quarter of birth} therefore a plausible
+instrument.
+
+Their strategy requires that variation in schooling years, $S$, by quarter of
+birth only results from institutional variation in policy. However there is
+potential mechanisms that would cause quarter of birth to be correlated with
+ability, for example, children older in the year may be of greater mental and
+physical ability which could have tangible impacts on the wage equation and thus
+potentially endogenous with wage outcomes and violation of Assumption
+\ref{asum:exclusion}.}
+
+\subsection{Sibling / Twin Studies}
+
+Twin studies are widely used in econometrics to control for unobserved genetic
+and environmental factors. Since twins share the same genes (identical twins) or
+a significant portion of them (fraternal twins) and often grow up in the same
+household, differences in outcomes (such as wages) can be attributed more
+directly to differences in treatment (such as education). Consider a simple
+regression for each twin:
+
+\begin{equation}
+    Y_i = \alpha_i + \beta S_i + \epsilon
+\end{equation}
+
+\asumr{Identical Error Terms}{twinepsilon}{In a twin study it is assumed that
+the twin are identical in their error terms implying their otherwise
+unobservable traits are identical.}
+
+Thus the difference between outcomes between twins is found using:
+
+\begin{equation}
+    \begin{split}
+        Y_1 - Y_0 &= (\alpha_1 - \alpha_0) + \beta(S_1 - S_0) + \epsilon - \epsilon \\ 
+        Y_1 - Y_0 &= (\alpha_1 - \alpha_0) +\beta(S_1 - S_0)
+    \end{split}
+\end{equation}
+
+\begin{itemize}
+
+    \item $\alpha_i$ is the twin-specific fixed effects, this attempts to
+    control for observable characteristics of each twin that may differ their
+    wage outcomes outside of amount of schooling, 
+
+    \item $\beta$ represents the policy effect of the difference in schooling years.
+
+    \item $\epsilon$ represents the identical error term between twins. 
+    
+    
+\end{itemize}
+
+\exm{\textcite{card_chapter_1999}}{
+After comparing the effectiveness of different empirical strategies, David Card
+finds that twin studies yield similar results to
+\href{https://en.wikipedia.org/wiki/Mincer_earnings_function}{Mincer}
+regressions estimated by OLS. That is, siblings with greater education tend to
+have greater wages on average. }
+
+Despite the family background aspect of twin studies being an important role in
+controlling for potential unobserved characteristics it is not a perfect
+control. It may not wholly capture individual ability and the strong assumption
+of identical error terms (\ref{asum:twinepsilon}) is still not likely in most
+experiments. 
+
+\section{Practical Questions} 
+
+\textcite{angrist_does_1991} use an instrumental variables methodology to
+estimate the effect of an additional year of schooling on earnings. The
+instrumental variable they adopt combines the child’s month of birth with an
+institutional rule that all children must stay at school until they are aged 16
+(at the time of the study). In the UK, all children start school in the
+September that they are aged 4. This means that 
+
+\begin{itemize} 
+
+\item children born in August start school when they have just turned 4 
+
+\item children born in September start school when they are nearly five 
+
+\end{itemize} 
+
+In the study, all children had to stay at school until they are 16. This means
+that children born in August have 1 additional year of compulsory schooling. The
+instrumental variable is defined to take the value of 1 if the child is bornin
+August and 0 if born in September.
+
+\begin{enumerate}
+
+    \item \begin{enumerate}
+    
+        \item Define the treatment and control groups in this study
+
+        \begin{answer}
+        
+            The treatment group is those born in August vs those born
+            earlier since the former allowed for an additional year of
+            schooling
+
+        \end{answer}
+        
+        \item What are the two assumptions inherent in the IV estimation
+
+        \begin{answer}
+            
+            \textbf{Relevance} - the instrument (the random birth month)
+            must be highly correlated to years of compulsory schooling, likely
+            to be true to regulatory framework.
+            
+           \textbf{Exclusion Restriction} - the instrument must only
+            effect the outcome variable through its impact on the regressor and
+            has no indirect impact.
+
+        \end{answer}
+            
+        \item How can you test whether these assumptions are correct? 
+
+        \begin{answer}
+
+            \begin{description}
+            
+                \item[Relevance] can be tested using a t-statistic test when
+                regressing the instruments impact on compulsory schooling: if
+                significantly
+                non-zero we can more confidently assume the IV is relevant.
+    
+                \item[Exclusion Restriction] cannot be directly tested as
+                indirect effects are not able to be isolated.
+
+            \end{description}
+
+        \end{answer}
+            
+        \item List two potential failures of the IV assumptions in this case
+
+        \begin{answer}
+        
+        The most likely assumption to be violated is the exclusion
+        restriction - if the birth month effects the earnings later in life
+        through other unobserved factors. For example, if those born later in
+        the year are persistently less confident than older pupils who were at
+        later states of physical and mental development throughout education
+        which could have an impact on long term wage outcomes. Alternatively,
+        knowing that children born earlier are more likely to get more
+        schooling, parents may strategically choose to try and have there
+        children born around the beginning of the academic year as to get an
+        advantage, the characteristics of such parents could effect the child's
+        upbringing.
+
+        \end{answer}
+
+    \end{enumerate}
+
+    \item Understanding variation we see in the data. Another way to think of
+    the return to education is to understand the effect that parents’ education
+    has on the outcomes of their children. 
+
+    \begin{enumerate}
+    
+        \item Can you use sibling/twin studies methodology? Write out an
+        equation to explain why.
+
+        \begin{answer} 
+            No, since twin/siblings have parents of the same education level.
+        \end{answer}
+        
+        \item If we collected a dataset of you and your fellow Econ students,
+        then in 30 years measured again, for those of you who had children, the
+        achievement of the children in their tests at school. Would this be
+        useful data to study the effect of parent education on children? Why?
+
+        \begin{answer}
+        
+            No, since there is not enough variation in important characteristics
+            such as years of schooling, subject studied, etc.
+        
+        \end{answer}
+        
+        \item What would be a plausible strategy to identify the causal effect
+        of parent education on the outcomes of their children?
+
+        \begin{answer}
+        
+            Look for a quasi-experiment by finding a policy change exogenous
+            which impacts parents education and analyse whether subsets of those
+            cohorts are exogenously impacted by the IV affected earnings
+            outcomes for their children.
+            
+        \end{answer}
+        
+    \end{enumerate}
+    
+\end{enumerate}
+
+\printbibliography
+\end{refsection}
+
+\end{document}

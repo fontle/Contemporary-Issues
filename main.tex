@@ -1,0 +1,63 @@
+\documentclass[A4,12pt,twoside]{book}
+\usepackage{amd}
+
+% %--------------------------------------------------------------------------
+% %         General Setting
+% %--------------------------------------------------------------------------
+
+\graphicspath{{Images/}{../Images/}} %Path of figures
+\setkeys{Gin}{width=0.85\textwidth} %Size of figures
+\setlength{\cftbeforechapskip}{3pt} %space between items in toc
+\usepackage{parskip} % No indent in new paragraphs
+\usepackage[all]{nowidow} % Tries to remove widows
+\usepackage{setspace}
+\onehalfspacing
+\frenchspacing % No double spacing between sentences
+
+\input{theorems.tex} % Theorems styles and colors
+\usepackage[english]{babel} %Language
+
+\setlist[itemize]{itemsep=1pt} % Adjust the length as needed
+\setlist[enumerate]{itemsep=1pt} % Adjust the length as needed
+
+% %--------------------------------------------------------------------------
+% %         General Informations
+% %--------------------------------------------------------------------------
+\newcommand{\BigTitle}{
+    Contemporary Issues in Economic Analysis
+    }
+
+\newcommand{\LittleTitle}{
+    Lecture Notes
+    }
+
+    
+\begin{document}
+% %--------------------------------------------------------------------------
+% %         First pages 
+% %--------------------------------------------------------------------------
+\newgeometry{top=8cm,bottom=.5in,left=2cm,right=2cm}
+\subfile{files/0.0.0.titlepage}
+\restoregeometry
+\subfile{files/0.Preface}
+\subfile{files/0.zommaire}
+
+% %--------------------------------------------------------------------------
+% %         Core of the document 
+% %--------------------------------------------------------------------------
+\part{First part: Microeconomic Issues}
+\subfile{files/1.1.returnstoeducation.tex}
+\subfile{files/1.2.childpoverty.tex}
+\subfile{files/1.3.youthunemployment}
+
+\part{Second part: Macroeconomic Issues}
+
+
+
+
+% %--------------------------------------------------------------------------
+% %         Bibliographie 
+% %--------------------------------------------------------------------------
+%\nocite{*} % to cite evey things, else cite each on using : \cite{ifrs17}. 
+\printbibliography %to print bibliographie
+\end{document}
